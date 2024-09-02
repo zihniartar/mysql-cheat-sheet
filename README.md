@@ -46,4 +46,32 @@ crontab -e
 0 2 * * * mysqldump -u root -p[Passwort] mydatabase | gzip > /backups/mydatabase_backup_$(date +\%F).sql.gz
 ```
 
+## Datenbank wiederherstellen
 
+### Eine einzelne Datenbank wiederherstellen
+
+#### Alte Datenbank löschen
+```bash
+DROP DATABASE IF EXISTS YourDatabaseName;
+CREATE DATABASE YourDatabaseName;
+```
+
+#### Importieren der Sicherung in die Datenbank
+```bash
+mysql -u [Benutzername] -p YourDatabaseName < /pfad/zur/sicherung/datei.sql
+
+```
+
+### Datenbank zurückspielen, wenn sie bereits existiert
+Importbefehl direkt verwenden
+
+```bash
+mysql -u [Benutzername] -p YourDatabaseName < /pfad/zur/sicherung/datei.sql
+```
+
+### Wiederherstellung von komprimierten Sicherungen
+
+```bash
+gunzip < /pfad/zur/sicherung/datei.sql.gz | mysql -u [Benutzername] -p YourDatabaseName
+
+```
