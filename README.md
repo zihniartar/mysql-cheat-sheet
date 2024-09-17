@@ -1,5 +1,20 @@
 
 # MySQL Cheat Sheet
+
+## Liste aller Datenbanken ausgeben
+
+### An der MySQL-Konsole anmelden
+```bash
+mysql -u root -p
+```
+
+### Alle Datenbanken auflisten
+```bash
+SHOW DATABASES;
+```
+
+
+
 ## Datenbank sichern
 
 ### Eine einzelne Datenbank sichern
